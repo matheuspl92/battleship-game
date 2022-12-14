@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const ShipFactory = require('../scripts/ship');
+const ShipFactory = require('../scripts/factories/ship');
 
 const LENGTH = 3;
 

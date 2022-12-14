@@ -1,4 +1,4 @@
-const randomCoord = require('./randomPlay');
+const randomCoord = require('../methods/randomPlay');
 
 const PlayerFactory = (playerName) => {
   const name = playerName;

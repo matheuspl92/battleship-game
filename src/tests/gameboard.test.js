@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const GameboardFactory = require('../scripts/gameboard');
+const GameboardFactory = require('../scripts/factories/gameboard');
 
 const testGameboard = GameboardFactory([
   {
