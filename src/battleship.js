@@ -1,5 +1,6 @@
 const Player = require('./scripts/factories/player');
 const Gameboard = require('./scripts/factories/gameboard');
+const display = require('./scripts/display/display');
 
 const player1 = Player('Player');
 const player2 = Player('Computer');
@@ -24,3 +25,5 @@ const shipsArray = [
 
 const gameboard1 = Gameboard(shipsArray);
 const gameboard2 = Gameboard(shipsArray);
+
+display.init(player1, player2, gameboard1, gameboard2);
