@@ -1,3 +1,6 @@
+import './styles/reset.css';
+import './styles/common.css';
+
 const Player = require('./scripts/factories/player');
 const Gameboard = require('./scripts/factories/gameboard');
 const display = require('./scripts/display/display');
