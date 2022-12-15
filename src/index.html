@@ -7,8 +7,49 @@
     <title>Battleship</title>
 </head>
 <body>
-    <header></header>
-    <div id="container"></div>
-    <footer></footer>
+    <header>
+        <p>Battleship Game</p>
+    </header>
+    <div id="container">
+        <div id="start-screen" class="visible">
+            <form onsubmit="return false">
+                <label for="player-name-input">Choose your admiral name:</label>
+                <input type="text" name="playerName" id="player-name-input">
+                <button id="start-button">Start battle!</button>
+            </form>
+        </div>
+        <div id="play-screen" class="hidden">
+            <div id="message-box"></div>
+            <div id="player1-title" class="title"></div>
+            <div id="player2-title" class="title"></div>
+            <div id="player1-gameboard" class="gameboard">
+                <div id="player1-cell1" class="cell"></div>
+                <div id="player1-cell2" class="cell"></div>
+                <div id="player1-cell3" class="cell"></div>
+                <div id="player1-cell4" class="cell"></div>
+                <div id="player1-cell5" class="cell"></div>
+                <div id="player1-cell6" class="cell"></div>
+                <div id="player1-cell7" class="cell"></div>
+                <div id="player1-cell8" class="cell"></div>
+                <div id="player1-cell9" class="cell"></div>
+                <div id="player1-cell10" class="cell"></div>
+            </div>
+            <div id="player2-gameboard" class="gameboard">
+                <div id="player2-cell1" class="cell"></div>
+                <div id="player2-cell2" class="cell"></div>
+                <div id="player2-cell3" class="cell"></div>
+                <div id="player2-cell4" class="cell"></div>
+                <div id="player2-cell5" class="cell"></div>
+                <div id="player2-cell6" class="cell"></div>
+                <div id="player2-cell7" class="cell"></div>
+                <div id="player2-cell8" class="cell"></div>
+                <div id="player2-cell9" class="cell"></div>
+                <div id="player2-cell10" class="cell"></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Made by <a href="https://github.com/matheuspl92/battleship-game" target="_blank">matheuspl92</a>.</p>
+    </footer>
 </body>
 </html>
