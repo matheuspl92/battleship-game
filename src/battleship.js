@@ -1,5 +1,6 @@
 import './styles/reset.css';
 import './styles/common.css';
+import './styles/start-screen.css';
 
 const Player = require('./scripts/factories/player');
 const Gameboard = require('./scripts/factories/gameboard');
