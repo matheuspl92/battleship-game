@@ -1,3 +1,7 @@
+#start-screen {
+    position: absolute;
+}
+
 form {
     display: flex;
     flex-direction: column;
