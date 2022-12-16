@@ -1,0 +1,22 @@
+#game-screen {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2em 2em 1fr;
+    gap: 32px;
+}
+
+#message-box {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.gameboard {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px);
+}
+
+.cell {
+    border: 1px solid black;
+}
