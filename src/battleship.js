@@ -1,10 +1,12 @@
 import './styles/reset.css';
 import './styles/common.css';
 import './styles/start-screen.css';
+import './styles/game-screen.css';
+// eslint-disable-next-line import/no-cycle
+import display from './scripts/display/display';
 
 const Player = require('./scripts/factories/player');
 const Gameboard = require('./scripts/factories/gameboard');
-const display = require('./scripts/display/display');
 
 const player1 = Player('Player');
 const player2 = Player('Computer');
@@ -30,4 +32,14 @@ const shipsArray = [
 const gameboard1 = Gameboard(shipsArray);
 const gameboard2 = Gameboard(shipsArray);
 
-display.init(player1, player2, gameboard1, gameboard2);
+const startForm = document.getElementsByTagName('form')[0];
+
+startForm.addEventListener('submit', () => {
+  display.initGame(player1, player2, gameboard1, gameboard2);
+});
+
+const cellClicked = (cellElement) => {
+  console.log(cellElement);
+};
+
+export default cellClicked;
