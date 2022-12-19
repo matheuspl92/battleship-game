@@ -1,8 +1,10 @@
-import cellClicked from '../../battleship';
-
 const display = () => {
   const startScreen = document.getElementById('start-screen');
   const gameScreen = document.getElementById('game-screen');
+
+  const cellClicked = (cellElement) => {
+    console.log(cellElement);
+  };
 
   const initGame = (player1, player2, gameboard1, gameboard2) => {
     console.log('game started');

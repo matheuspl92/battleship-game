@@ -37,9 +37,3 @@ const startForm = document.getElementsByTagName('form')[0];
 startForm.addEventListener('submit', () => {
   display.initGame(player1, player2, gameboard1, gameboard2);
 });
-
-const cellClicked = (cellElement) => {
-  console.log(cellElement);
-};
-
-export default cellClicked;
