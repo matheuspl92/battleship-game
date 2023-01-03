@@ -41,7 +41,7 @@ test('player 1 won the game', () => {
 
   const gameboard1 = GameboardFactory(shipsArray);
   const gameboard2 = GameboardFactory([]);
-  expect(hasGameEnded(gameboard1, gameboard2)).toBe(0);
+  expect(hasGameEnded(gameboard1, gameboard2)).toBe(1);
 });
 
 test('player 2 won the game', () => {
@@ -51,5 +51,5 @@ test('player 2 won the game', () => {
 
   const gameboard1 = GameboardFactory([]);
   const gameboard2 = GameboardFactory(shipsArray);
-  expect(hasGameEnded(gameboard1, gameboard2)).toBe(1);
+  expect(hasGameEnded(gameboard1, gameboard2)).toBe(2);
 });
