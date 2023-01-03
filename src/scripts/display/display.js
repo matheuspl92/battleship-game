@@ -1,3 +1,5 @@
+const returnXY = require('../methods/returnXY');
+
 const display = () => {
   const startScreen = document.getElementById('start-screen');
   const gameScreen = document.getElementById('game-screen');
@@ -24,8 +26,8 @@ const display = () => {
     for (let i = 0; i < 100; i += 1) {
       const newCell1 = document.createElement('div');
       newCell1.id = `player1-cell${i}`;
-      newCell1.className = 'cell';
       newCell1.dataset.index = i;
+      newCell1.classList.add('cell', `${gameboard1.checkCell(returnXY(i))}`);
 
       newCell1.addEventListener('click', (e) => {
         cellClicked(e.target);

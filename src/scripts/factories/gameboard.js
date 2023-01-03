@@ -45,11 +45,19 @@ const GameboardFactory = (ships) => {
 
   const validateAttack = (x, y) => (typeof grid[x][y] === 'string');
 
+  const checkCell = (coords) => {
+    if (typeof grid[coords[1]][coords[0]] === 'object') {
+      return 'ship';
+    }
+    return 'empty';
+  };
+
   return {
     grid,
     hasShips,
     receiveAttack,
     validateAttack,
+    checkCell,
   };
 };
 
