@@ -4,8 +4,15 @@ const display = () => {
   const startScreen = document.getElementById('start-screen');
   const gameScreen = document.getElementById('game-screen');
 
-  const cellClicked = (cellElement) => {
-    console.log(cellElement);
+  const cellClicked = (cellElement, gameboard1, gameboard2, player2) => {
+    console.log(returnXY(cellElement.dataset.index));
+    const coord = returnXY(cellElement.dataset.index);
+    if (!gameboard2.validateAttack(coord[1], coord[0])) {
+      cellElement.classList.add(gameboard2.receiveAttack(coord[1], coord[0]));
+      console.log('attack');
+
+      player2.takeTurn(gameboard1);
+    }
   };
 
   const initGame = (player1, player2, gameboard1, gameboard2) => {
@@ -29,17 +36,13 @@ const display = () => {
       newCell1.dataset.index = i;
       newCell1.classList.add('cell', `${gameboard1.checkCell(returnXY(i))}`);
 
-      newCell1.addEventListener('click', (e) => {
-        cellClicked(e.target);
-      });
-
       const newCell2 = document.createElement('div');
       newCell2.id = `player2-cell${i}`;
       newCell2.className = 'cell';
       newCell2.dataset.index = i;
 
       newCell2.addEventListener('click', (e) => {
-        cellClicked(e.target);
+        cellClicked(e.target, gameboard1, gameboard2, player2);
       });
 
       player1Gameboard.appendChild(newCell1);
