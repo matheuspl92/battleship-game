@@ -35,6 +35,8 @@ const gameboard2 = Gameboard(shipsArray);
 const startForm = document.getElementsByTagName('form')[0];
 
 startForm.addEventListener('submit', () => {
+  const formData = new FormData(startForm);
+  if (formData.get('playerName') !== '') { player1.name = formData.get('playerName'); }
   display.initGame(player1, player2, gameboard1, gameboard2);
 });
 
