@@ -1,3 +1,5 @@
+import hasGameEnded from '../../battleship';
+
 const returnXY = require('../methods/returnXY');
 
 const display = () => {
@@ -5,18 +7,20 @@ const display = () => {
   const gameScreen = document.getElementById('game-screen');
 
   const updatePlayerGameboard = (cellData) => {
-    const cellElement = document.getElementById(`player1-cell${cellData.x * 10 + cellData.y}`);
+    const cellElement = document.getElementById(`player1-cell${cellData.x + cellData.y * 10}`);
     cellElement.classList.add(cellData.value);
   };
 
   const cellClicked = (cellElement, gameboard1, gameboard2, player2) => {
-    console.log(returnXY(cellElement.dataset.index));
     const coord = returnXY(cellElement.dataset.index);
     if (!gameboard2.validateAttack(coord[1], coord[0])) {
       cellElement.classList.add(gameboard2.receiveAttack(coord[1], coord[0]));
-      console.log('attack');
+
+      if (hasGameEnded(gameboard1, gameboard2)) return alert('player 1 has won');
 
       updatePlayerGameboard(player2.takeTurn(gameboard1));
+
+      if (hasGameEnded(gameboard1, gameboard2)) return alert('player 2 has won');
     }
   };
 

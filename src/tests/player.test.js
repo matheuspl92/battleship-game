@@ -26,7 +26,7 @@ test('player has name', () => {
 });
 
 test('computer can make a valid move', () => {
-  expect(['hit', 'miss']).toContain(testPlayer.takeTurn(testGameboard));
+  expect(['hit', 'miss']).toContain(testPlayer.takeTurn(testGameboard).value);
 });
 
 test('player can make a hit move', () => {

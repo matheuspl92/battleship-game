@@ -27,14 +27,15 @@ const GameboardFactory = (ships) => {
 
   // console.log(grid);
 
-  const shipCount = ships.length;
+  let shipCellCount = ships.reduce((a, b) => a + b.size, 0);
 
-  const hasShips = () => shipCount > 0;
+  const hasShips = () => shipCellCount > 0;
 
   const receiveAttack = (x, y) => {
     if (typeof grid[x][y] === 'object') {
       grid[x][y].hit();
       grid[x][y] = 'hit';
+      shipCellCount -= 1;
       return grid[x][y];
     }
     if (typeof grid[x][y] === 'undefined') {
