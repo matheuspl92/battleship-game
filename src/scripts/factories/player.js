@@ -15,7 +15,11 @@ const PlayerFactory = (playerName) => {
         newY = randomCoord();
       }
 
-      return gameboard.receiveAttack(newX, newY);
+      return {
+        value: gameboard.receiveAttack(newX, newY),
+        x: newX,
+        y: newY,
+      };
     }
     return gameboard.receiveAttack(x, y);
   };

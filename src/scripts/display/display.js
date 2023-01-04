@@ -4,6 +4,11 @@ const display = () => {
   const startScreen = document.getElementById('start-screen');
   const gameScreen = document.getElementById('game-screen');
 
+  const updatePlayerGameboard = (cellData) => {
+    const cellElement = document.getElementById(`player1-cell${cellData.x * 10 + cellData.y}`);
+    cellElement.classList.add(cellData.value);
+  };
+
   const cellClicked = (cellElement, gameboard1, gameboard2, player2) => {
     console.log(returnXY(cellElement.dataset.index));
     const coord = returnXY(cellElement.dataset.index);
@@ -11,7 +16,7 @@ const display = () => {
       cellElement.classList.add(gameboard2.receiveAttack(coord[1], coord[0]));
       console.log('attack');
 
-      player2.takeTurn(gameboard1);
+      updatePlayerGameboard(player2.takeTurn(gameboard1));
     }
   };
 
