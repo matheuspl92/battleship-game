@@ -11,16 +11,25 @@ const display = () => {
     cellElement.classList.add(cellData.value);
   };
 
-  const cellClicked = (cellElement, gameboard1, gameboard2, player2) => {
+  const showWinner = (winner) => {
+    console.log('SHOW');
+    const winnerText = document.getElementById('winner');
+    winnerText.innerHTML = winner;
+
+    const modal = document.getElementById('modalOne');
+    modal.classList.remove('hidden');
+  };
+
+  const cellClicked = (cellElement, gameboard1, gameboard2, player2, player1) => {
     const coord = returnXY(cellElement.dataset.index);
     if (!gameboard2.validateAttack(coord[1], coord[0])) {
       cellElement.classList.add(gameboard2.receiveAttack(coord[1], coord[0]));
 
-      if (hasGameEnded(gameboard1, gameboard2)) return alert('player 1 has won');
+      if (hasGameEnded(gameboard1, gameboard2)) showWinner(`${player1.name} has WON!`);
 
       updatePlayerGameboard(player2.takeTurn(gameboard1));
 
-      if (hasGameEnded(gameboard1, gameboard2)) return alert('player 2 has won');
+      if (hasGameEnded(gameboard1, gameboard2)) showWinner(`${player1.name} has WON!`);
     }
   };
 
@@ -51,7 +60,7 @@ const display = () => {
       newCell2.dataset.index = i;
 
       newCell2.addEventListener('click', (e) => {
-        cellClicked(e.target, gameboard1, gameboard2, player2);
+        cellClicked(e.target, gameboard1, gameboard2, player2, player1);
       });
 
       player1Gameboard.appendChild(newCell1);

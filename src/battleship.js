@@ -1,5 +1,6 @@
 import './styles/reset.css';
 import './styles/common.css';
+import './styles/modal.css';
 import './styles/start-screen.css';
 import './styles/game-screen.css';
 // eslint-disable-next-line import/no-cycle
@@ -31,6 +32,22 @@ const shipsArray = [
 
 const gameboard1 = Gameboard(shipsArray);
 const gameboard2 = Gameboard(shipsArray);
+
+// Modal Initialization
+
+const closeBtns = [...document.querySelectorAll('.close')];
+closeBtns.forEach((btn) => {
+  btn.onclick = function () {
+    const modal = btn.closest('.modal');
+    modal.classList.add('hidden');
+  };
+});
+
+window.onclick = function (event) {
+  if (event.target.className === 'modal') {
+    event.target.classList.add('hidden');
+  }
+};
 
 const startForm = document.getElementsByTagName('form')[0];
 
