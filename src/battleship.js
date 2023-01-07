@@ -35,19 +35,10 @@ const gameboard2 = Gameboard(shipsArray);
 
 // Modal Initialization
 
-const closeBtns = [...document.querySelectorAll('.close')];
-closeBtns.forEach((btn) => {
-  btn.onclick = function () {
-    const modal = btn.closest('.modal');
-    modal.classList.add('hidden');
-  };
+const playAgainBtn = document.getElementById('play-again');
+playAgainBtn.addEventListener('click', () => {
+  location.reload();
 });
-
-window.onclick = function (event) {
-  if (event.target.className === 'modal') {
-    event.target.classList.add('hidden');
-  }
-};
 
 const startForm = document.getElementsByTagName('form')[0];
 
