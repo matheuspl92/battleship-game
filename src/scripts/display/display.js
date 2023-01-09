@@ -4,6 +4,7 @@ const returnXY = require('../methods/returnXY');
 
 const display = () => {
   const startScreen = document.getElementById('start-screen');
+  const placeShipsScreen = document.getElementById('place-ships-screen');
   const gameScreen = document.getElementById('game-screen');
 
   const updatePlayerGameboard = (cellData) => {
@@ -68,8 +69,31 @@ const display = () => {
     }
   };
 
+  const placeShips = (player1) => {
+    startScreen.className = 'hidden';
+    placeShipsScreen.className = 'visible';
+
+    const messageBox = document.getElementById('message-box-1');
+    messageBox.innerHTML = 'Place your ships! Press R to rotate ship';
+    const templateGameboard = document.getElementById('template-gameboard');
+
+    for (let i = 0; i < 100; i += 1) {
+      const newCell1 = document.createElement('div');
+      newCell1.id = `template-cell${i}`;
+      newCell1.dataset.index = i;
+      newCell1.classList.add('cell');
+
+      newCell1.addEventListener('click', (e) => {
+
+      });
+
+      templateGameboard.appendChild(newCell1);
+    }
+  };
+
   return {
     initGame,
+    placeShips,
   };
 };
 

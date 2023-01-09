@@ -2,6 +2,7 @@ import './styles/reset.css';
 import './styles/common.css';
 import './styles/modal.css';
 import './styles/start-screen.css';
+import './styles/place-ships-screen.css';
 import './styles/game-screen.css';
 // eslint-disable-next-line import/no-cycle
 import display from './scripts/display/display';
@@ -45,7 +46,9 @@ const startForm = document.getElementsByTagName('form')[0];
 startForm.addEventListener('submit', () => {
   const formData = new FormData(startForm);
   if (formData.get('playerName') !== '') { player1.name = formData.get('playerName'); }
-  display.initGame(player1, player2, gameboard1, gameboard2);
+
+  display.placeShips(player1, player2);
+  // display.initGame(player1, player2, gameboard1, gameboard2);
 });
 
 function hasGameEnded(gameboard1, gameboard2) {

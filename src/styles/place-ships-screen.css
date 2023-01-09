@@ -1,14 +1,9 @@
-#game-screen {
+#place-ships-screen {
     position: absolute;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2em 2em 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2em 1fr;
     gap: 32px;
-}
-
-#message-box-2 {
-    grid-column-start: 1;
-    grid-column-end: 3;
 }
 
 .gameboard {
