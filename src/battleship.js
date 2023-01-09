@@ -13,7 +13,7 @@ const Gameboard = require('./scripts/factories/gameboard');
 const player1 = Player('Player');
 const player2 = Player('Computer');
 
-const shipsArray = [
+/* const shipsArray = [
   {
     name: 'Carrier', size: 5, x: 0, y: 0, orientation: 'vertical',
   },
@@ -32,7 +32,7 @@ const shipsArray = [
 ];
 
 const gameboard1 = Gameboard(shipsArray);
-const gameboard2 = Gameboard(shipsArray);
+const gameboard2 = Gameboard(shipsArray); */
 
 // Modal Initialization
 
