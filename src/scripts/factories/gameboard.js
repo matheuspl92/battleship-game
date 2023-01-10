@@ -18,6 +18,7 @@ const GameboardFactory = (ships) => {
     const newShip = ShipFactory(ship.name, ship.size);
 
     if (ship.orientation === 'vertical') {
+      // places the string 'blocked' on the neighbors cells
       for (let i = ship.y; i < ship.y + ship.size; i += 1) {
         for (let j = ship.y - 1; j < ship.y + ship.size + 1; j += 1) {
           for (let k = ship.x - 1; k <= ship.x + 1; k += 1) {
@@ -25,11 +26,18 @@ const GameboardFactory = (ships) => {
           }
         }
       }
+      // places the ship object on the grid cells
       for (let i = ship.y; i < ship.y + ship.size; i += 1) {
+        console.log(`${ship.x},${i}`);
         grid[ship.x][i] = newShip;
       }
     } else {
+      console.log('horizontal');
+      // places the string 'blocked' on the neighbors cells
+
+      // places the ship object on the grid cells
       for (let i = ship.x; i < ship.x + ship.size; i += 1) {
+        console.log(`${i},${ship.y}`);
         grid[i][ship.y] = newShip;
       }
     }
@@ -43,7 +51,7 @@ const GameboardFactory = (ships) => {
       }
     } else {
       for (let i = ship.x; i < ship.x + ship.size; i += 1) {
-        // console.log(grid[ship.y][i]);
+        console.log(grid[ship.y][i]);
         if ((typeof grid[ship.y][i] === 'undefined') || (typeof grid[ship.y][i] === 'object') || (grid[ship.y][i] === 'blocked')) return false;
       }
     }
@@ -82,6 +90,9 @@ const GameboardFactory = (ships) => {
   const checkCell = (coords) => {
     if (typeof grid[coords[1]][coords[0]] === 'object') {
       return 'ship';
+    }
+    if (grid[coords[1]][coords[0]] === 'blocked') {
+      return 'blocked';
     }
     return 'empty';
   };

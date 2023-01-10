@@ -20,6 +20,10 @@
     background-color: black;
 }
 
+.blocked {
+    background-color: gray;
+}
+
 .hit {
     background-color: red;
 }

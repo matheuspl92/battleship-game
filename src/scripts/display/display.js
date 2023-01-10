@@ -84,7 +84,7 @@ const display = () => {
   };
 
   const placeShips = (player1, player2) => {
-    const orientation = 'vertical';
+    const orientation = 'horizontal';
 
     const ships = [{
       name: 'Carrier', size: 5,
@@ -129,6 +129,7 @@ const display = () => {
         ships[0].x = position.shift();
         ships[0].orientation = orientation;
         // console.log(gameboard1.validatePosition(ships[0]));
+        // console.log(ships[0]);
         if (gameboard1.validatePosition(ships[0])) {
           gameboard1.placeShip(ships.shift());
           drawShips(gameboard1);
