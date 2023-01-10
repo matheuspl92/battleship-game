@@ -18,12 +18,19 @@ const GameboardFactory = (ships) => {
     const newShip = ShipFactory(ship.name, ship.size);
 
     if (ship.orientation === 'vertical') {
-      for (let j = ship.y; j < ship.y + ship.size; j += 1) {
-        grid[ship.x][j] = newShip;
+      for (let i = ship.y; i < ship.y + ship.size; i += 1) {
+        for (let j = ship.y - 1; j < ship.y + ship.size + 1; j += 1) {
+          for (let k = ship.x - 1; k <= ship.x + 1; k += 1) {
+            if (j >= 0 && j <= 9 && k >= 0 && k <= 9) grid[k][j] = 'blocked';
+          }
+        }
+      }
+      for (let i = ship.y; i < ship.y + ship.size; i += 1) {
+        grid[ship.x][i] = newShip;
       }
     } else {
-      for (let j = ship.x; j < ship.x + ship.size; j += 1) {
-        grid[j][ship.y] = newShip;
+      for (let i = ship.x; i < ship.x + ship.size; i += 1) {
+        grid[i][ship.y] = newShip;
       }
     }
   };
@@ -31,24 +38,24 @@ const GameboardFactory = (ships) => {
   const validatePosition = (ship) => {
     if (ship.orientation === 'vertical') {
       for (let i = ship.y; i < ship.y + ship.size; i += 1) {
-        // console.log(grid[ship.x][i]);
-        if ((typeof grid[ship.x][i] === 'undefined') || (typeof grid[ship.x][i] === 'object')) return false;
+        console.log(grid[ship.x][i]);
+        if ((typeof grid[ship.x][i] === 'undefined') || (typeof grid[ship.x][i] === 'object') || (grid[ship.x][i] === 'blocked')) return false;
       }
     } else {
       for (let i = ship.x; i < ship.x + ship.size; i += 1) {
         // console.log(grid[ship.y][i]);
-        if ((typeof grid[ship.y][i] === 'undefined') || (typeof grid[ship.y][i] === 'object')) return false;
+        if ((typeof grid[ship.y][i] === 'undefined') || (typeof grid[ship.y][i] === 'object') || (grid[ship.y][i] === 'blocked')) return false;
       }
     }
-    console.log('CLICK');
-    for (let i = ship.y - 1; i <= ship.y + 1; i += 1) {
+    // console.log('CLICK');
+    /* for (let i = ship.y - 1; i <= ship.y + 1; i += 1) {
       for (let j = ship.x - 1; j <= ship.x + 1; j += 1) {
-        console.log(`${j}, ${i}`);
-        console.log(grid[i][j]);
+        // console.log(`${j}, ${i}`);
+        // console.log(grid[i][j]);
 
         if (typeof grid[i][j] === 'object') return false;
       }
-    }
+    } */
     // placeShip(ship);
     return true;
   };

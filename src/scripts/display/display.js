@@ -14,7 +14,7 @@ const display = () => {
   };
 
   const showWinner = (winner) => {
-    console.log('SHOW');
+    // console.log('SHOW');
     const winnerText = document.getElementById('winner');
     winnerText.innerHTML = winner;
 
@@ -36,7 +36,7 @@ const display = () => {
   };
 
   const initGame = (player1, player2, gameboard1, gameboard2) => {
-    console.log('game started');
+    // console.log('game started');
 
     placeShipsScreen.className = 'hidden';
     gameScreen.className = 'visible';
