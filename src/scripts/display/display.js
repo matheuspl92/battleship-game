@@ -79,7 +79,8 @@ const display = () => {
       // console.log(cells[i]);
       const { index } = cells[i].dataset;
       // console.log(index);
-      cells[i].classList.add(`${gameboard.checkCell(returnXY(index))}`);
+      cells[i].className = '';
+      cells[i].classList.add('cell', `${gameboard.checkCell(returnXY(index))}`);
     }
   };
 
@@ -125,8 +126,8 @@ const display = () => {
       newCell1.addEventListener('click', (e) => {
         // console.log('template cell clicked');
         const position = returnXY(e.target.dataset.index);
-        ships[0].y = position.shift();
         ships[0].x = position.shift();
+        ships[0].y = position.shift();
         ships[0].orientation = orientation;
         // console.log(gameboard1.validatePosition(ships[0]));
         // console.log(ships[0]);

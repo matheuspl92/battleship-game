@@ -34,7 +34,12 @@ const GameboardFactory = (ships) => {
     } else {
       console.log('horizontal');
       // places the string 'blocked' on the neighbors cells
-
+      for (let i = ship.x - 1; i < ship.x + ship.size + 1; i += 1) {
+        for (let j = ship.y - 1; j <= ship.y + 1; j += 1) {
+          console.log(`${i},${j}`);
+          if (i >= 0 && i <= 9 && j >= 0 && j <= 9) grid[i][j] = 'blocked';
+        }
+      }
       // places the ship object on the grid cells
       for (let i = ship.x; i < ship.x + ship.size; i += 1) {
         console.log(`${i},${ship.y}`);
@@ -51,8 +56,8 @@ const GameboardFactory = (ships) => {
       }
     } else {
       for (let i = ship.x; i < ship.x + ship.size; i += 1) {
-        console.log(grid[ship.y][i]);
-        if ((typeof grid[ship.y][i] === 'undefined') || (typeof grid[ship.y][i] === 'object') || (grid[ship.y][i] === 'blocked')) return false;
+        console.log(grid[i][ship.y]);
+        if ((typeof grid[i][ship.y] === 'undefined') || (typeof grid[i][ship.y] === 'object') || (grid[i][ship.y] === 'blocked')) return false;
       }
     }
     // console.log('CLICK');
@@ -88,10 +93,10 @@ const GameboardFactory = (ships) => {
   const validateAttack = (x, y) => (typeof grid[x][y] === 'string');
 
   const checkCell = (coords) => {
-    if (typeof grid[coords[1]][coords[0]] === 'object') {
+    if (typeof grid[coords[0]][coords[1]] === 'object') {
       return 'ship';
     }
-    if (grid[coords[1]][coords[0]] === 'blocked') {
+    if (grid[coords[0]][coords[1]] === 'blocked') {
       return 'blocked';
     }
     return 'empty';
