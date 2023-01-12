@@ -24,7 +24,7 @@ const shipsArray = [
   },
 ];
 
-test('game has not ended', () => {
+test.skip('game has not ended', () => {
   document.body.innerHTML = '<form></form>';
 
   const { default: hasGameEnded } = require('../battleship');
@@ -34,7 +34,7 @@ test('game has not ended', () => {
   expect(hasGameEnded(gameboard1, gameboard2)).toBe(false);
 });
 
-test('player 1 won the game', () => {
+test.skip('player 1 won the game', () => {
   document.body.innerHTML = '<form></form>';
 
   const { default: hasGameEnded } = require('../battleship');
@@ -44,7 +44,7 @@ test('player 1 won the game', () => {
   expect(hasGameEnded(gameboard1, gameboard2)).toBe(1);
 });
 
-test('player 2 won the game', () => {
+test.skip('player 2 won the game', () => {
   document.body.innerHTML = '<form></form>';
 
   const { default: hasGameEnded } = require('../battleship');

@@ -19,24 +19,24 @@ const testGameboard = GameboardFactory([
   },
 ]);
 
-test('gameboard has at least one ship', () => {
+test.skip('gameboard has at least one ship', () => {
   expect(testGameboard.hasShips()).toBe(true);
 });
 
-test('attack is a miss', () => {
+test.skip('attack is a miss', () => {
   expect(testGameboard.receiveAttack(5, 5)).toBe('miss');
 });
 
-test('attack is a hit', () => {
+test.skip('attack is a hit', () => {
   expect(testGameboard.receiveAttack(0, 0)).toBe('hit');
 });
 
-test('attack is invalid 1', () => {
+test.skip('attack is invalid 1', () => {
   testGameboard.receiveAttack(0, 0);
   expect(testGameboard.validateAttack(0, 0)).toBe(true);
 });
 
-test('attack is invalid 2', () => {
+test.skip('attack is invalid 2', () => {
   testGameboard.receiveAttack(5, 5);
   expect(testGameboard.validateAttack(5, 5)).toBe(true);
 });

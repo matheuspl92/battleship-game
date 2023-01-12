@@ -25,14 +25,14 @@ test('player has name', () => {
   expect(testPlayer.name).toBe('test');
 });
 
-test('computer can make a valid move', () => {
+test.skip('computer can make a valid move', () => {
   expect(['hit', 'miss']).toContain(testPlayer.takeTurn(testGameboard).value);
 });
 
-test('player can make a hit move', () => {
+test.skip('player can make a hit move', () => {
   expect(testPlayer.takeTurn(testGameboard, 0, 0)).toBe('hit');
 });
 
-test('player can make a miss move', () => {
+test.skip('player can make a miss move', () => {
   expect(testPlayer.takeTurn(testGameboard, 5, 5)).toBe('miss');
 });

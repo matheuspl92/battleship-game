@@ -4,8 +4,8 @@ const returnXY = (index) => {
   let x = 0;
   let y = 0;
 
-  x = Math.floor(index / 10);
-  y = index % 10;
+  x = index % 10;
+  y = Math.floor(index / 10);
 
   return [x, y];
 };
