@@ -96,7 +96,7 @@ const display = () => {
       }
     });
 
-    const ships = [{
+    const ships1, ships2 = [{
       name: 'Carrier', size: 5,
     },
     {
