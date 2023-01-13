@@ -85,7 +85,16 @@ const display = () => {
   };
 
   const placeShips = (player1, player2) => {
-    const orientation = 'horizontal';
+    let orientation = 'horizontal';
+    window.addEventListener('keydown', (e) => {
+      if (e.isComposing || e.key === 'r') {
+        if (orientation === 'horizontal') {
+          orientation = 'vertical';
+        } else {
+          orientation = 'horizontal';
+        }
+      }
+    });
 
     const ships = [{
       name: 'Carrier', size: 5,
@@ -123,6 +132,7 @@ const display = () => {
         // console.log(newCell1.id);
       });
 
+      // eslint-disable-next-line no-loop-func
       newCell1.addEventListener('click', (e) => {
         // console.log('template cell clicked');
         const position = returnXY(e.target.dataset.index);
