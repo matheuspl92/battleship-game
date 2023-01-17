@@ -28,21 +28,21 @@ const GameboardFactory = (ships) => {
       }
       // places the ship object on the grid cells
       for (let i = ship.y; i < ship.y + ship.size; i += 1) {
-        console.log(`${ship.x},${i}`);
+        // console.log(`${ship.x},${i}`);
         grid[ship.x][i] = newShip;
       }
     } else {
-      console.log('horizontal');
+      // console.log('horizontal');
       // places the string 'blocked' on the neighbors cells
       for (let i = ship.x - 1; i < ship.x + ship.size + 1; i += 1) {
         for (let j = ship.y - 1; j <= ship.y + 1; j += 1) {
-          console.log(`${i},${j}`);
+          // console.log(`${i},${j}`);
           if (i >= 0 && i <= 9 && j >= 0 && j <= 9) grid[i][j] = 'blocked';
         }
       }
       // places the ship object on the grid cells
       for (let i = ship.x; i < ship.x + ship.size; i += 1) {
-        console.log(`${i},${ship.y}`);
+        // console.log(`${i},${ship.y}`);
         grid[i][ship.y] = newShip;
       }
     }
@@ -51,13 +51,17 @@ const GameboardFactory = (ships) => {
   const validatePosition = (ship) => {
     if (ship.orientation === 'vertical') {
       for (let i = ship.y; i < ship.y + ship.size; i += 1) {
-        console.log(grid[ship.x][i]);
-        if ((typeof grid[ship.x][i] === 'undefined') || (typeof grid[ship.x][i] === 'object') || (grid[ship.x][i] === 'blocked')) return false;
+        // console.log(grid[ship.x][i]);
+        if (typeof grid[ship.x][i] === 'undefined') return false;
+        if ((typeof grid[ship.x][i] === 'object') || (grid[ship.x][i] === 'blocked')) return false;
       }
     } else {
       for (let i = ship.x; i < ship.x + ship.size; i += 1) {
-        console.log(grid[i][ship.y]);
-        if ((typeof grid[i][ship.y] === 'undefined') || (typeof grid[i][ship.y] === 'object') || (grid[i][ship.y] === 'blocked')) return false;
+        console.log(`${i}, ${ship.y}`);
+        // console.log(grid[i][ship.y]);
+        if (i > 9) return false;
+        // if (typeof grid[i][ship.y] === 'undefined') return false;
+        if ((typeof grid[i][ship.y] === 'object') || (grid[i][ship.y] === 'blocked')) return false;
       }
     }
     // console.log('CLICK');

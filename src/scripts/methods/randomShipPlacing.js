@@ -1,16 +1,21 @@
 const randomCoord = require('./randomPlay');
 
 const randomShipPlacing = (ship) => {
-  const newShip = { ...ship };
-  newShip.x = randomCoord();
-  newShip.y = randomCoord();
-  newShip.orientation = 'horizontal';
+  const x = randomCoord();
+  const y = randomCoord();
+  let orientation = 'horizontal';
 
   if (Math.random() > 0.5) {
-    newShip.orientation = 'vertical';
+    orientation = 'vertical';
   }
 
-  return newShip;
+  return {
+    name: ship.name,
+    size: ship.size,
+    x,
+    y,
+    orientation,
+  };
 };
 
 module.exports = randomShipPlacing;

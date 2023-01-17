@@ -1,5 +1,7 @@
 import hasGameEnded from '../../battleship';
 import GameboardFactory from '../factories/gameboard';
+import randomCoord from '../methods/randomPlay';
+import randomShipPlacing from '../methods/randomShipPlacing';
 
 const returnXY = require('../methods/returnXY');
 
@@ -96,7 +98,7 @@ const display = () => {
       }
     });
 
-    const ships1, ships2 = [{
+    const ships = [{
       name: 'Carrier', size: 5,
     },
     {
@@ -111,6 +113,8 @@ const display = () => {
     {
       name: 'Destroyer', size: 2,
     }];
+
+    const shipsAI = ships.slice();
 
     startScreen.className = 'hidden';
     placeShipsScreen.className = 'visible';
@@ -147,6 +151,14 @@ const display = () => {
         }
         if (ships.length === 0) {
           const gameboard2 = GameboardFactory();
+          while (shipsAI.length > 0) {
+            const newShip = randomShipPlacing(shipsAI[0]);
+            console.log(newShip);
+            if (gameboard2.validatePosition(newShip)) {
+              gameboard2.placeShip(newShip);
+              shipsAI.shift();
+            }
+          }
           initGame(player1, player2, gameboard1, gameboard2);
         }
       });
