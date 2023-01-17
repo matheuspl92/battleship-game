@@ -89,13 +89,16 @@ const display = () => {
   };
 
   const placeShips = (player1, player2) => {
+    const messageBox = document.getElementById('message-box-1');
     let orientation = 'horizontal';
     window.addEventListener('keydown', (e) => {
       if (e.isComposing || e.key === 'r') {
         if (orientation === 'horizontal') {
           orientation = 'vertical';
+          messageBox.innerHTML = 'Place ship! Press R to rotate ship (Vertical)';
         } else {
           orientation = 'horizontal';
+          messageBox.innerHTML = 'Place ship! Press R to rotate ship (Horizontal)';
         }
       }
     });
@@ -121,8 +124,7 @@ const display = () => {
     startScreen.className = 'hidden';
     placeShipsScreen.className = 'visible';
 
-    const messageBox = document.getElementById('message-box-1');
-    messageBox.innerHTML = 'Place your ships! Press R to rotate ship';
+    messageBox.innerHTML = 'Place ship! Press R to rotate ship (Horizontal)';
 
     const templateGameboard = document.getElementById('template-gameboard');
 
