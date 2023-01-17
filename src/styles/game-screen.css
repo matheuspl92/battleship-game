@@ -11,24 +11,24 @@
     grid-column-end: 3;
 }
 
+.title {
+    display: flex;
+    font-size: 1.5em;
+    font-weight: bold;
+    align-items: flex-end;
+    justify-content: center;
+}
+
 .gameboard {
     display: grid;
     grid-template-columns: repeat(10, 40px);
     grid-template-rows: repeat(10, 40px);
 }
 
-.cell {
-    border: 1px solid black;
+#player2-gameboard .cell {
+    cursor: crosshair;
 }
 
-.ship {
-    background-color: black;
-}
-
-.hit {
-    background-color: red;
-}
-
-.miss {
-    background-color: gray;
+#player2-gameboard .cell:hover {
+    border-color: greenyellow;
 }

@@ -37,6 +37,23 @@ header {
     margin-top: 25vh;
 }
 
+.cell {
+    transition: all .25s;
+    border: 1px solid black;
+}
+
+.ship {
+    background-color: black;
+}
+
+.hit {
+    background-color: red;
+}
+
+.miss {
+    background-color: gray;
+}
+
 footer {
     position: absolute;
     bottom: 0;

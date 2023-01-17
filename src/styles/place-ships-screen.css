@@ -2,28 +2,21 @@
     position: absolute;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 2em 1fr;
+    grid-template-rows: 4em 1fr;
     gap: 32px;
+}
+
+#message-box-1 {
+    display: flex;
+    font-size: 1.25em;
+    font-weight: bold;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .gameboard {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(10, 40px);
     grid-template-rows: repeat(10, 40px);
-}
-
-.cell {
-    border: 1px solid black;
-}
-
-.ship {
-    background-color: black;
-}
-
-.hit {
-    background-color: red;
-}
-
-.miss {
-    background-color: gray;
 }
