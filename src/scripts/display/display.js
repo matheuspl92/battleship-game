@@ -1,6 +1,5 @@
 import hasGameEnded from '../../battleship';
 import GameboardFactory from '../factories/gameboard';
-import randomCoord from '../methods/randomPlay';
 import randomShipPlacing from '../methods/randomShipPlacing';
 
 const returnXY = require('../methods/returnXY');
@@ -16,7 +15,6 @@ const display = () => {
   };
 
   const showWinner = (winner) => {
-    // console.log('SHOW');
     const winnerText = document.getElementById('winner');
     winnerText.innerHTML = winner;
 
@@ -25,10 +23,8 @@ const display = () => {
   };
 
   const cellClicked = (cellElement, gameboard1, gameboard2, player2, player1) => {
-    console.log('click');
     const coord = returnXY(cellElement.dataset.index);
     if (gameboard2.validateAttack(coord[0], coord[1])) {
-      console.log('validated');
       cellElement.classList.add(gameboard2.receiveAttack(coord[0], coord[1]));
 
       if (hasGameEnded(gameboard1, gameboard2)) showWinner(`${player1.name} has WON!`);
@@ -40,8 +36,6 @@ const display = () => {
   };
 
   const initGame = (player1, player2, gameboard1, gameboard2) => {
-    // console.log('game started');
-
     placeShipsScreen.className = 'hidden';
     gameScreen.className = 'visible';
 
@@ -80,9 +74,7 @@ const display = () => {
     const cells = templateGameboard.children;
 
     for (let i = 0; i < cells.length; i += 1) {
-      // console.log(cells[i]);
       const { index } = cells[i].dataset;
-      // console.log(index);
       cells[i].className = '';
       cells[i].classList.add('cell', `${gameboard.checkCell(returnXY(index))}`);
     }
@@ -137,18 +129,14 @@ const display = () => {
       newCell1.classList.add('cell');
 
       newCell1.addEventListener('mouseover', (e) => {
-        // console.log(newCell1.id);
       });
 
       // eslint-disable-next-line no-loop-func
       newCell1.addEventListener('click', (e) => {
-        // console.log('template cell clicked');
         const position = returnXY(e.target.dataset.index);
         ships[0].x = position.shift();
         ships[0].y = position.shift();
         ships[0].orientation = orientation;
-        // console.log(gameboard1.validatePosition(ships[0]));
-        // console.log(ships[0]);
         if (gameboard1.validatePosition(ships[0])) {
           gameboard1.placeShip(ships.shift());
           drawShips(gameboard1);
@@ -157,7 +145,6 @@ const display = () => {
           const gameboard2 = GameboardFactory();
           while (shipsAI.length > 0) {
             const newShip = randomShipPlacing(shipsAI[0]);
-            // console.log(newShip);
             if (gameboard2.validatePosition(newShip)) {
               gameboard2.placeShip(newShip);
               shipsAI.shift();
