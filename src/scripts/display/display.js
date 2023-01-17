@@ -25,9 +25,11 @@ const display = () => {
   };
 
   const cellClicked = (cellElement, gameboard1, gameboard2, player2, player1) => {
+    console.log('click');
     const coord = returnXY(cellElement.dataset.index);
-    if (!gameboard2.validateAttack(coord[1], coord[0])) {
-      cellElement.classList.add(gameboard2.receiveAttack(coord[1], coord[0]));
+    if (gameboard2.validateAttack(coord[0], coord[1])) {
+      console.log('validated');
+      cellElement.classList.add(gameboard2.receiveAttack(coord[0], coord[1]));
 
       if (hasGameEnded(gameboard1, gameboard2)) showWinner(`${player1.name} has WON!`);
 
@@ -153,7 +155,7 @@ const display = () => {
           const gameboard2 = GameboardFactory();
           while (shipsAI.length > 0) {
             const newShip = randomShipPlacing(shipsAI[0]);
-            console.log(newShip);
+            // console.log(newShip);
             if (gameboard2.validatePosition(newShip)) {
               gameboard2.placeShip(newShip);
               shipsAI.shift();

@@ -15,6 +15,7 @@ const GameboardFactory = (ships) => {
   // places the ship object in the vertical or horizontal grid squares between its chosen coord.
   // plus its length.
   const placeShip = (ship) => {
+    shipCellCount += 1;
     const newShip = ShipFactory(ship.name, ship.size);
 
     if (ship.orientation === 'vertical') {
@@ -57,7 +58,7 @@ const GameboardFactory = (ships) => {
       }
     } else {
       for (let i = ship.x; i < ship.x + ship.size; i += 1) {
-        console.log(`${i}, ${ship.y}`);
+        //  console.log(`${i}, ${ship.y}`);
         // console.log(grid[i][ship.y]);
         if (i > 9) return false;
         // if (typeof grid[i][ship.y] === 'undefined') return false;
@@ -82,19 +83,23 @@ const GameboardFactory = (ships) => {
   const hasShips = () => shipCellCount > 0;
 
   const receiveAttack = (x, y) => {
+    console.log('receive attack');
     if (typeof grid[x][y] === 'object') {
       grid[x][y].hit();
       grid[x][y] = 'hit';
       shipCellCount -= 1;
       return grid[x][y];
     }
-    if (typeof grid[x][y] === 'undefined') {
+    if (grid[x][y] === 'blocked' || grid[x][y] === 'empty') {
       grid[x][y] = 'miss';
       return grid[x][y];
     }
   };
 
-  const validateAttack = (x, y) => (typeof grid[x][y] === 'string');
+  const validateAttack = (x, y) => {
+    console.log(grid[x][y]);
+    return !(grid[x][y] === 'miss');
+  };
 
   const checkCell = (coords) => {
     if (typeof grid[coords[0]][coords[1]] === 'object') {

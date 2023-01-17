@@ -4,13 +4,14 @@ const PlayerFactory = (playerName) => {
   const name = playerName;
 
   const takeTurn = (gameboard, x, y) => {
+    console.log('computer turn');
     // check if is a computer move and makes a random play, if not
     // makes the player move
     if (x === undefined && y === undefined) {
       let newX = randomCoord();
       let newY = randomCoord();
 
-      while (gameboard.validateAttack(newX, newY)) {
+      while (!gameboard.validateAttack(newX, newY)) {
         newX = randomCoord();
         newY = randomCoord();
       }
