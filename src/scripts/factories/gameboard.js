@@ -15,7 +15,7 @@ const GameboardFactory = (ships) => {
   // places the ship object in the vertical or horizontal grid squares between its chosen coord.
   // plus its length.
   const placeShip = (ship) => {
-    shipCellCount += 1;
+    shipCellCount += ship.size;
     const newShip = ShipFactory(ship.name, ship.size);
 
     if (ship.orientation === 'vertical') {
@@ -88,6 +88,7 @@ const GameboardFactory = (ships) => {
       grid[x][y].hit();
       grid[x][y] = 'hit';
       shipCellCount -= 1;
+      console.log(shipCellCount);
       return grid[x][y];
     }
     if (grid[x][y] === 'blocked' || grid[x][y] === 'empty') {
