@@ -1,6 +1,6 @@
 # battleship-game
 
-#### GitHub Pages link: https://matheuspl92.github.io/weather-app/
+#### GitHub Pages link: https://matheuspl92.github.io/battleship-game/
 
 A simple Battleship game web application. This project is a Test-Driven Development exercise.
 
